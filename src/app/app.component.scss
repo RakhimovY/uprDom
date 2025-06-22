@@ -1,0 +1,61 @@
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+app-sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  box-shadow: 2px 0 5px var(--color-shadow);
+  position: sticky;
+  top: 70px; /* Height of the header */
+  height: calc(100vh - 70px); /* Viewport height minus header height */
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--color-background);
+  overflow-y: auto;
+}
+
+app-header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  box-shadow: 0 2px 5px var(--color-shadow);
+  z-index: 10;
+}
+
+app-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 16px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  app-sidebar {
+    width: 100%;
+    position: static; /* Reset sticky position for mobile */
+    height: auto; /* Reset height for mobile */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.open {
+      max-height: 300px;
+      position: sticky; /* Make it sticky when open */
+      top: 70px; /* Height of the header */
+      z-index: 900; /* Below header but above content */
+    }
+  }
+}

@@ -1,0 +1,69 @@
+@use 'sass:map';
+@use './theme-variables' as vars;
+
+// Dark theme color palette
+// Modern, minimalist color scheme
+$dark-primary: #738efc;
+$dark-primary-light: #a5b4fd;
+$dark-primary-dark: #4361ee;
+$dark-accent: #66d9e8;
+$dark-accent-light: #99e9f2;
+$dark-accent-dark: #3bc9db;
+$dark-warn: #ff8787;
+$dark-warn-light: #ffa8a8;
+$dark-warn-dark: #f03e3e;
+
+// Create a simple theme map for reference
+$dark-theme: (
+  primary: $dark-primary,
+  primary-light: $dark-primary-light,
+  primary-dark: $dark-primary-dark,
+  accent: $dark-accent,
+  accent-light: $dark-accent-light,
+  accent-dark: $dark-accent-dark,
+  warn: $dark-warn,
+  warn-light: $dark-warn-light,
+  warn-dark: $dark-warn-dark
+);
+
+// Custom dark theme colors
+$dark-theme-colors: (
+  primary: $dark-primary,
+  primary-light: $dark-primary-light,
+  primary-dark: $dark-primary-dark,
+  accent: $dark-accent,
+  accent-light: $dark-accent-light,
+  accent-dark: $dark-accent-dark,
+  warn: $dark-warn,
+  warn-light: $dark-warn-light,
+  warn-dark: $dark-warn-dark,
+  background: #121212,
+  surface: #1e1e1e,
+  card: #252525,
+  text-primary: rgba(255, 255, 255, 0.87),
+  text-secondary: rgba(255, 255, 255, 0.6),
+  text-hint: rgba(255, 255, 255, 0.38),
+  divider: rgba(255, 255, 255, 0.12),
+  shadow: rgba(0, 0, 0, 0.5),
+  success: #51cf66,
+  info: #4dabf7,
+);
+
+// Dark theme CSS variables
+.dark-theme {
+  @each $name, $color in $dark-theme-colors {
+    --color-#{$name}: #{$color};
+  }
+
+  // Additional variables
+  --card-bg: var(--color-card);
+  --card-shadow: #{vars.$shadow-lg};
+  --header-bg: #1a1a1a;
+  --header-text: var(--color-primary);
+  --sidebar-bg: #1a1a1a;
+  --sidebar-text: var(--color-text-primary);
+  --sidebar-active: var(--color-primary);
+  --footer-bg: #1a1a1a;
+  --footer-text: var(--color-text-secondary);
+  --border-color: rgba(255, 255, 255, 0.12);
+}

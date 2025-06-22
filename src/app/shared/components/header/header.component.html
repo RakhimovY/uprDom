@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a routerLink="/" class="logo">
+        <img class="logo-icon svg-icon" src="assets/icons/home.svg" alt="Home" width="24" height="24">
+        <span class="logo-text">Управление Домом</span>
+      </a>
+    </div>
+
+
+    <div class="actions-container">
+      <button class="action-button theme-toggle" (click)="toggleTheme()" aria-label="Переключить тему">
+        <img *ngIf="isDarkTheme" class="svg-icon" src="assets/icons/sun.svg" alt="Light mode" width="20" height="20">
+        <img *ngIf="!isDarkTheme" class="svg-icon" src="assets/icons/moon.svg" alt="Dark mode" width="20" height="20">
+      </button>
+
+      <button class="action-button user-menu" (click)="userPanel.toggle($event)" aria-label="Меню пользователя">
+        <img class="svg-icon" src="assets/icons/user.svg" alt="User menu" width="20" height="20">
+      </button>
+
+      <p-overlayPanel #userPanel styleClass="user-dropdown">
+        <p-menu [model]="userMenuItems"></p-menu>
+      </p-overlayPanel>
+    </div>
+
+    <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Меню">
+      <img class="svg-icon" src="assets/icons/menu.svg" alt="Menu" width="24" height="24">
+    </button>
+  </div>
+</header>

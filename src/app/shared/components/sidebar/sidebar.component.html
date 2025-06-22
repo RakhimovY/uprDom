@@ -1,0 +1,89 @@
+<aside class="sidebar" [class.open]="isOpen">
+  <div class="user-info">
+    <div class="user-avatar">
+      <img class="svg-icon" src="assets/icons/user.svg" alt="User" width="24" height="24">
+    </div>
+    <div class="user-details">
+      <div class="user-name">Иван Иванов</div>
+      <div class="user-role">Житель</div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h3 class="nav-section-title">Основное</h3>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/dashboard.svg" alt="Dashboard" width="20" height="20">
+            <span class="nav-text">Дашборд</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/payments" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/payments.svg" alt="Payments" width="20" height="20">
+            <span class="nav-text">Платежи</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/requests" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/requests.svg" alt="Requests" width="20" height="20">
+            <span class="nav-text">Заявки</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <h3 class="nav-section-title">Общее</h3>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a routerLink="/meetings" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/meetings.svg" alt="Meetings" width="20" height="20">
+            <span class="nav-text">Собрания</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/voting" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/voting.svg" alt="Voting" width="20" height="20">
+            <span class="nav-text">Голосования</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/documents" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/documents.svg" alt="Documents" width="20" height="20">
+            <span class="nav-text">Документы</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <h3 class="nav-section-title">Информация</h3>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a routerLink="/contacts" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/contacts.svg" alt="Contacts" width="20" height="20">
+            <span class="nav-text">Контакты</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/faq" routerLinkActive="active" class="nav-link">
+            <img class="nav-icon svg-icon" src="assets/icons/faq.svg" alt="FAQ" width="20" height="20">
+            <span class="nav-text">Вопросы и ответы</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="theme-toggle" (click)="toggleTheme()">
+      <img *ngIf="isDarkTheme" class="theme-icon svg-icon" src="assets/icons/sun.svg" alt="Light mode" width="20" height="20">
+      <img *ngIf="!isDarkTheme" class="theme-icon svg-icon" src="assets/icons/moon.svg" alt="Dark mode" width="20" height="20">
+      <span class="theme-text">
+        {{ isDarkTheme ? 'Светлая тема' : 'Тёмная тема' }}
+      </span>
+    </button>
+  </div>
+</aside>

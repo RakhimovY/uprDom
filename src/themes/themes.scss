@@ -1,0 +1,240 @@
+@use 'sass:map';
+
+// Import theme files
+@use './theme-variables' as vars;
+@use './light-theme';
+@use './dark-theme';
+
+// Common styles for both themes
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: background-color vars.$transition-normal, color vars.$transition-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+// Apply themes using CSS variables
+// PrimeNG components will use the theme from angular.json
+.light-theme {
+  // Theme variables are applied via CSS variables in the light-theme.scss file
+}
+
+.dark-theme {
+  // Theme variables are applied via CSS variables in the dark-theme.scss file
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: vars.$spacing-md;
+  font-weight: vars.$font-weight-medium;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: vars.$font-size-xxl;
+}
+
+h2 {
+  font-size: vars.$font-size-xl;
+}
+
+h3 {
+  font-size: vars.$font-size-lg;
+}
+
+h4 {
+  font-size: vars.$font-size-md;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: vars.$spacing-md;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color vars.$transition-fast;
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+// Common component styles
+.card {
+  background-color: var(--card-bg);
+  border-radius: vars.$border-radius-lg;
+  box-shadow: var(--card-shadow);
+  padding: vars.$spacing-lg;
+  margin-bottom: vars.$spacing-md;
+  transition: all vars.$transition-normal;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: vars.$shadow-lg;
+    border-color: var(--color-primary-light);
+  }
+
+  &.card-hover-effect {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: transparent;
+      transition: background-color vars.$transition-normal;
+    }
+
+    &:hover::after {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .card-header {
+    margin: -#{vars.$spacing-lg} -#{vars.$spacing-lg} vars.$spacing-md -#{vars.$spacing-lg};
+    padding: vars.$spacing-md vars.$spacing-lg;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .card-footer {
+    margin: vars.$spacing-md -#{vars.$spacing-lg} -#{vars.$spacing-lg} -#{vars.$spacing-lg};
+    padding: vars.$spacing-md vars.$spacing-lg;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.section-title {
+  font-size: vars.$font-size-xl;
+  font-weight: vars.$font-weight-medium;
+  margin-bottom: vars.$spacing-lg;
+  color: var(--color-text-primary);
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-primary);
+    margin-top: vars.$spacing-xs;
+  }
+}
+
+.widget-title {
+  font-size: vars.$font-size-md;
+  font-weight: vars.$font-weight-medium;
+  margin-bottom: vars.$spacing-md;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: var(--color-primary);
+    margin-right: vars.$spacing-sm;
+    border-radius: vars.$border-radius-sm;
+  }
+}
+
+// Responsive container
+.container {
+  width: 100%;
+  padding-right: vars.$spacing-md;
+  padding-left: vars.$spacing-md;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: vars.$breakpoint-sm) {
+    max-width: 540px;
+  }
+
+  @media (min-width: vars.$breakpoint-md) {
+    max-width: 720px;
+  }
+
+  @media (min-width: vars.$breakpoint-lg) {
+    max-width: 960px;
+  }
+
+  @media (min-width: vars.$breakpoint-xl) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: vars.$breakpoint-xxl) {
+    max-width: 1320px;
+  }
+}
+
+// Grid system
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -(vars.$spacing-md);
+  margin-left: -(vars.$spacing-md);
+}
+
+.col {
+  flex: 1 0 0;
+  padding-right: vars.$spacing-md;
+  padding-left: vars.$spacing-md;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 auto;
+    width: percentage($i / 12);
+    padding-right: vars.$spacing-md;
+    padding-left: vars.$spacing-md;
+  }
+
+  @media (min-width: vars.$breakpoint-sm) {
+    .col-sm-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+
+  @media (min-width: vars.$breakpoint-md) {
+    .col-md-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+
+  @media (min-width: vars.$breakpoint-lg) {
+    .col-lg-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+
+  @media (min-width: vars.$breakpoint-xl) {
+    .col-xl-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
